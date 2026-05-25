@@ -1,0 +1,27 @@
+name: test
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out to path checkout1
+        uses: actions/checkout@v6
+        with:
+          path: checkout1
+
+      - name: Get current working dir1
+        run: pwd
+
+      - name: Check out to path checkout2
+        uses: actions/checkout@v6
+        with:
+          path: checkout2
+
+      - name: Get current working dir2
+        run: pwd
