@@ -18,17 +18,17 @@ jobs:
         with:
           path: default
 
-      - name: Check out head.sha
+      - name: Check out refs/pull/PR_NUM/head
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          path: head.sha
+          ref: refs/pull/${{ github.event.number }}/head
+          path: head
 
-      - name: Check out merge_commit_sha
+      - name: Check out refs/pull/PR_NUM/merge
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
-          path: merge_commit_sha
+          ref: refs/pull/${{ github.event.number }}/merge
+          path: merge
 
       - name: Get current working dir1
         run: |
@@ -36,9 +36,9 @@ jobs:
           echo "$(pwd)"
           echo '-------------------- files in pwd --------------------'
           ls
-          echo '-------------- diff -r default head.sha --------------'
-          diff -r -x .git default head.sha || true
-          echo '-------------- diff -r default merge_commit_sha --------------'
-          diff -r -x .git default merge_commit_sha || true
-          echo '-------------- diff -r head.sha merge_commit_sha --------------'
-          diff -r -x .git head.sha merge_commit_sha || true
+          echo '---------------- diff -r default head ----------------'
+          diff -r -x .git default head || true
+          echo '---------------- diff -r default merge ---------------'
+          diff -r -x .git default merge || true
+          echo '----------------- diff -r head merge -----------------'
+          diff -r -x .git head merge || true
