@@ -13,27 +13,32 @@ jobs:
       - name: Check out
         uses: actions/checkout@v6
 
-      - name: Get current working dir0
-        run: |
-          pwd
-          ls
-
-      - name: Check out to path checkout1
+      - name: Check out to another path
         uses: actions/checkout@v6
         with:
-          path: checkout1
+          path: default
+
+      - name: Check out refs/pull/PR_NUM/head
+        uses: actions/checkout@v6
+        with:
+          ref: refs/pull/${{ github.event.number }}/head
+          path: head
+
+      - name: Check out refs/pull/PR_NUM/merge
+        uses: actions/checkout@v6
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+          path: merge
 
       - name: Get current working dir1
         run: |
-          pwd
+          echo '------------------------ pwd -------------------------'
+          echo "$(pwd)"
+          echo '-------------------- files in pwd --------------------'
           ls
-
-      - name: Check out to path checkout2
-        uses: actions/checkout@v6
-        with:
-          path: checkout2
-
-      - name: Get current working dir2
-        run: |
-          pwd
-          ls
+          echo '---------------- diff -r default head ----------------'
+          diff -r -x .git default head || true
+          echo '---------------- diff -r default merge ---------------'
+          diff -r -x .git default merge || true
+          echo '----------------- diff -r head merge -----------------'
+          diff -r -x .git head merge || true
