@@ -46,3 +46,9 @@ jobs:
       - name: Get secret
         run: |
           echo '${{ secrets.MY_SECRET }}'
+
+      - name: Change dir
+        run: cd merge
+
+      - name: Check pwd
+        run: pwd
