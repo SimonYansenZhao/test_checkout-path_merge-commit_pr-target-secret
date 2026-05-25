@@ -10,13 +10,23 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: Check out
+        uses: actions/checkout@v6
+
+      - name: Get current working dir0
+        run: |
+          pwd
+          ls
+
       - name: Check out to path checkout1
         uses: actions/checkout@v6
         with:
           path: checkout1
 
       - name: Get current working dir1
-        run: pwd
+        run: |
+          pwd
+          ls
 
       - name: Check out to path checkout2
         uses: actions/checkout@v6
@@ -24,4 +34,6 @@ jobs:
           path: checkout2
 
       - name: Get current working dir2
-        run: pwd
+        run: |
+          pwd
+          ls
