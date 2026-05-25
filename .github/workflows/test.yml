@@ -37,8 +37,8 @@ jobs:
           echo '-------------------- files in pwd --------------------'
           ls
           echo '-------------- diff -r default head.sha --------------'
-          diff -r default head.sha
+          diff -r -x .git default head.sha || true
           echo '-------------- diff -r default merge_commit_sha --------------'
-          diff -r default merge_commit_sha
+          diff -r -x .git default merge_commit_sha || true
           echo '-------------- diff -r head.sha merge_commit_sha --------------'
-          diff -r head.sha merge_commit_sha
+          diff -r -x .git head.sha merge_commit_sha || true
