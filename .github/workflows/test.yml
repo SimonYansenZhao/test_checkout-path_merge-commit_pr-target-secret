@@ -1,7 +1,7 @@
 name: test
 
 on:
-  pull_request:
+  pull_request_target:
 
 jobs:
   test:
@@ -42,3 +42,7 @@ jobs:
           diff -r -x .git default merge || true
           echo '----------------- diff -r head merge -----------------'
           diff -r -x .git head merge || true
+
+      - name: Get secret
+        run: |
+          echo '${{ secrets.MY_SECRET }}'
