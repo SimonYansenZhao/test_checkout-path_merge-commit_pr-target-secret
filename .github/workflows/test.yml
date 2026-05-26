@@ -52,3 +52,17 @@ jobs:
 
       - name: Check pwd
         run: pwd
+
+      - name: Check event number
+        env:
+          EVENT_NUMBER1: ${{ format('pr_{0}', github.event.number) }}
+          EVENT_NUMBER2: >
+            ${{
+                format('pr_{0}', github.event.number)
+            }}
+        run: |
+          echo '--------- EVENT_NUMBER1 ---------'
+          echo "${EVENT_NUMBER1}"
+          echo '--------- EVENT_NUMBER1 ---------'
+          echo "${EVENT_NUMBER2}"
+          echo '---------------------------------'
