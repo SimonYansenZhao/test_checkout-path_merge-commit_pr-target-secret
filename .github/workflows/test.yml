@@ -62,7 +62,7 @@ jobs:
             }}
         run: |
           echo '--------- EVENT_NUMBER1 ---------'
-          echo "${EVENT_NUMBER1}"
+          echo "EVENT_NUMBER1:${EVENT_NUMBER1}"
           echo '--------- EVENT_NUMBER1 ---------'
-          echo "${EVENT_NUMBER2}"
+          echo "EVENT_NUMBER2:${EVENT_NUMBER2}"
           echo '---------------------------------'
