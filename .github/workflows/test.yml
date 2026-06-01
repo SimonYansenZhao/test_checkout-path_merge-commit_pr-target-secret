@@ -45,6 +45,7 @@ jobs:
 
       - name: Get secret
         run: |
+          echo '----------------------- secret -----------------------'
           echo '${{ secrets.MY_SECRET }}'
 
       - name: Change dir
